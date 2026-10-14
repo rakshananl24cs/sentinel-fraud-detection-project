@@ -1,0 +1,45 @@
+# ==============================================================================
+# REQUIREMENTS: Cost-Sensitive Fraud Detection System
+# Target Runtime: Python 3.12.x on Windows 64-bit
+#
+# COMPATIBILITY NOTES:
+# All specified packages provide pre-compiled binary wheels for Python 3.12
+# (CPython 3.12) on Windows (AMD64), eliminating C/C++ compilation overhead
+# during installation. Version ranges ensure reproducible and stable resolution.
+# ==============================================================================
+
+# API Framework & Server
+fastapi>=0.115.0,<0.120.0
+uvicorn[standard]>=0.30.0,<0.35.0
+pydantic>=2.8.0,<3.0.0
+pydantic-settings>=2.4.0,<3.0.0
+python-multipart>=0.0.9,<0.1.0
+
+# Database & ORM
+sqlalchemy>=2.0.30,<2.1.0
+psycopg[binary]>=3.2.0,<3.3.0
+alembic>=1.13.0,<2.0.0
+
+# Security & Authentication
+PyJWT>=2.9.0,<3.0.0
+passlib[bcrypt]>=1.7.4,<2.0.0
+python-dotenv>=1.0.0,<2.0.0
+
+# Numerical Computing & Data Processing
+numpy>=1.26.4,<2.3.0
+pandas>=2.2.2,<3.0.0
+
+# Machine Learning, Baselines & Imbalance
+scikit-learn>=1.5.0,<1.7.0
+xgboost>=2.1.0,<3.0.0
+imbalanced-learn>=0.12.3,<0.14.0
+joblib>=1.4.0,<2.0.0
+
+# Explainability & Visualizations
+shap>=0.45.0,<0.50.0
+matplotlib>=3.8.4,<3.10.0
+seaborn>=0.13.2,<0.14.0
+
+# Testing & Quality Assurance
+pytest>=8.2.0,<9.0.0
+httpx>=0.27.0,<0.29.0

@@ -1,0 +1,58 @@
+# Version control & metadata
+.git/
+.gitignore
+.gitattributes
+
+# Environment files and credentials (CRITICAL: prevent copying secrets into image)
+.env
+.env.*
+!.env.example
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Datasets and raw files (CRITICAL: prevent copying large 150MB creditcard.csv into image)
+*.csv
+*.tsv
+*.parquet
+ml/data/
+c:/data/
+
+# Research notebooks and reports
+ml/notebooks/
+ml/reports/
+
+# Test suites (keep production image lean)
+ml/tests/
+backend/tests/
+
+# Documentation and frontend
+docs/
+frontend/
+
+# Local databases and runtime volumes
+pgdata/
+*.sqlite
+*.sqlite3
+*.log
+
+# Docker configs and temp files
+Dockerfile
+.dockerignore
+docker-compose*.yml
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

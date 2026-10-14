@@ -1,0 +1,314 @@
+{
+  "notice": "All threshold searches, cost evaluations, and sensitivities were computed strictly on the validation partition (42,718 rows, 56 fraud). Held-out test set remains strictly isolated.",
+  "cost_matrix_specification": {
+    "cost_fn": 100.0,
+    "cost_fp": 5.0,
+    "cost_review": 5.0,
+    "cost_friction": 50.0,
+    "review_efficiency": 1.0,
+    "max_review_capacity_pct": 5.0
+  },
+  "accounting_conventions": {
+    "genuine_approved": "Cost $0.0 (no friction, no fraud)",
+    "genuine_reviewed": "Cost $5.00 (human investigator salary/time)",
+    "genuine_blocked": "Cost $50.00 (customer churn, friction, support calls)",
+    "fraud_approved": "Cost $100.00 (complete financial loss of stolen funds/chargeback)",
+    "fraud_reviewed": "Cost $5.00 review fee + (1 - gamma) * $100.00 residual fraud loss",
+    "fraud_blocked": "Cost $0.0 (fraud stopped cleanly by automated block with no loss)"
+  },
+  "optimization_results": {
+    "uncalibrated_xgboost": {
+      "variant_name": "Uncalibrated_XGBoost",
+      "threshold_review": 0.044,
+      "threshold_block": 0.95367,
+      "total_cost": 1105.0,
+      "cost_per_transaction": 0.025867315885575167,
+      "review_rate_pct": 0.09597827613652324,
+      "capacity_satisfied": true,
+      "itemized_costs": {
+        "missed_fraud_cost": 900.0,
+        "review_operating_cost": 205.0,
+        "residual_fraud_cost": 0.0,
+        "block_friction_cost": 0.0
+      },
+      "outcome_counts": {
+        "genuine_approved": 42627,
+        "genuine_reviewed": 35,
+        "genuine_blocked": 0,
+        "fraud_approved": 9,
+        "fraud_reviewed": 6,
+        "fraud_blocked": 41,
+        "total_reviewed": 41,
+        "total_blocked": 41,
+        "total_approved": 42636
+      },
+      "cost_matrix_params": {
+        "cost_fn": 100.0,
+        "cost_fp": 5.0,
+        "cost_review": 5.0,
+        "cost_friction": 50.0,
+        "review_efficiency": 1.0,
+        "max_review_capacity_pct": 5.0
+      }
+    },
+    "platt_scaled_xgboost": {
+      "variant_name": "Platt_Scaled_XGBoost",
+      "threshold_review": 0.049,
+      "threshold_block": 0.93551,
+      "total_cost": 1105.0,
+      "cost_per_transaction": 0.025867315885575167,
+      "review_rate_pct": 0.09597827613652324,
+      "capacity_satisfied": true,
+      "itemized_costs": {
+        "missed_fraud_cost": 900.0,
+        "review_operating_cost": 205.0,
+        "residual_fraud_cost": 0.0,
+        "block_friction_cost": 0.0
+      },
+      "outcome_counts": {
+        "genuine_approved": 42627,
+        "genuine_reviewed": 35,
+        "genuine_blocked": 0,
+        "fraud_approved": 9,
+        "fraud_reviewed": 6,
+        "fraud_blocked": 41,
+        "total_reviewed": 41,
+        "total_blocked": 41,
+        "total_approved": 42636
+      },
+      "cost_matrix_params": {
+        "cost_fn": 100.0,
+        "cost_fp": 5.0,
+        "cost_review": 5.0,
+        "cost_friction": 50.0,
+        "review_efficiency": 1.0,
+        "max_review_capacity_pct": 5.0
+      }
+    },
+    "isotonic_calibrated_xgboost": {
+      "variant_name": "Isotonic_Calibrated_XGBoost",
+      "threshold_review": 0.042,
+      "threshold_block": 0.75388,
+      "total_cost": 1095.0,
+      "cost_per_transaction": 0.025633222529144625,
+      "review_rate_pct": 0.09129640900791236,
+      "capacity_satisfied": true,
+      "itemized_costs": {
+        "missed_fraud_cost": 900.0,
+        "review_operating_cost": 195.0,
+        "residual_fraud_cost": 0.0,
+        "block_friction_cost": 0.0
+      },
+      "outcome_counts": {
+        "genuine_approved": 42629,
+        "genuine_reviewed": 33,
+        "genuine_blocked": 0,
+        "fraud_approved": 9,
+        "fraud_reviewed": 6,
+        "fraud_blocked": 41,
+        "total_reviewed": 39,
+        "total_blocked": 41,
+        "total_approved": 42638
+      },
+      "cost_matrix_params": {
+        "cost_fn": 100.0,
+        "cost_fp": 5.0,
+        "cost_review": 5.0,
+        "cost_friction": 50.0,
+        "review_efficiency": 1.0,
+        "max_review_capacity_pct": 5.0
+      }
+    }
+  },
+  "fixed_0_50_baselines": {
+    "uncalibrated_fixed_05": {
+      "variant_name": "Uncalibrated_XGBoost_Fixed_0.50_Baseline",
+      "threshold_review": 0.5,
+      "threshold_block": 0.5,
+      "total_cost": 1350.0,
+      "cost_per_transaction": 0.03160260311812351,
+      "review_rate_pct": 0.0,
+      "capacity_satisfied": true,
+      "itemized_costs": {
+        "missed_fraud_cost": 1200.0,
+        "review_operating_cost": 0.0,
+        "residual_fraud_cost": 0.0,
+        "block_friction_cost": 150.0
+      },
+      "outcome_counts": {
+        "genuine_approved": 42659,
+        "genuine_reviewed": 0,
+        "genuine_blocked": 3,
+        "fraud_approved": 12,
+        "fraud_reviewed": 0,
+        "fraud_blocked": 44,
+        "total_reviewed": 0,
+        "total_blocked": 47,
+        "total_approved": 42671
+      },
+      "cost_matrix_params": {
+        "cost_fn": 100.0,
+        "cost_fp": 5.0,
+        "cost_review": 5.0,
+        "cost_friction": 50.0,
+        "review_efficiency": 1.0,
+        "max_review_capacity_pct": 5.0
+      }
+    },
+    "platt_fixed_05": {
+      "variant_name": "Platt_Scaled_XGBoost_Fixed_0.50_Baseline",
+      "threshold_review": 0.5,
+      "threshold_block": 0.5,
+      "total_cost": 1300.0,
+      "cost_per_transaction": 0.030432136335970784,
+      "review_rate_pct": 0.0,
+      "capacity_satisfied": true,
+      "itemized_costs": {
+        "missed_fraud_cost": 1200.0,
+        "review_operating_cost": 0.0,
+        "residual_fraud_cost": 0.0,
+        "block_friction_cost": 100.0
+      },
+      "outcome_counts": {
+        "genuine_approved": 42660,
+        "genuine_reviewed": 0,
+        "genuine_blocked": 2,
+        "fraud_approved": 12,
+        "fraud_reviewed": 0,
+        "fraud_blocked": 44,
+        "total_reviewed": 0,
+        "total_blocked": 46,
+        "total_approved": 42672
+      },
+      "cost_matrix_params": {
+        "cost_fn": 100.0,
+        "cost_fp": 5.0,
+        "cost_review": 5.0,
+        "cost_friction": 50.0,
+        "review_efficiency": 1.0,
+        "max_review_capacity_pct": 5.0
+      }
+    },
+    "isotonic_fixed_05": {
+      "variant_name": "Isotonic_Calibrated_XGBoost_Fixed_0.50_Baseline",
+      "threshold_review": 0.5,
+      "threshold_block": 0.5,
+      "total_cost": 1250.0,
+      "cost_per_transaction": 0.02926166955381806,
+      "review_rate_pct": 0.0,
+      "capacity_satisfied": true,
+      "itemized_costs": {
+        "missed_fraud_cost": 1200.0,
+        "review_operating_cost": 0.0,
+        "residual_fraud_cost": 0.0,
+        "block_friction_cost": 50.0
+      },
+      "outcome_counts": {
+        "genuine_approved": 42661,
+        "genuine_reviewed": 0,
+        "genuine_blocked": 1,
+        "fraud_approved": 12,
+        "fraud_reviewed": 0,
+        "fraud_blocked": 44,
+        "total_reviewed": 0,
+        "total_blocked": 45,
+        "total_approved": 42673
+      },
+      "cost_matrix_params": {
+        "cost_fn": 100.0,
+        "cost_fp": 5.0,
+        "cost_review": 5.0,
+        "cost_friction": 50.0,
+        "review_efficiency": 1.0,
+        "max_review_capacity_pct": 5.0
+      }
+    }
+  },
+  "best_policy_selected": {
+    "variant": "Isotonic_Calibrated_XGBoost",
+    "threshold_review": 0.042,
+    "threshold_block": 0.75388,
+    "total_cost": 1095.0,
+    "cost_per_transaction": 0.025633222529144625,
+    "review_rate_pct": 0.09129640900791236,
+    "capacity_satisfied": true
+  },
+  "sensitivity_analysis": {
+    "missed_fraud_cost_sensitivity": [
+      {
+        "cost_fn": 50.0,
+        "total_cost": 645.0,
+        "cost_per_transaction": 0.015099021489770121
+      },
+      {
+        "cost_fn": 100.0,
+        "total_cost": 1095.0,
+        "cost_per_transaction": 0.025633222529144625
+      },
+      {
+        "cost_fn": 200.0,
+        "total_cost": 1995.0,
+        "cost_per_transaction": 0.04670162460789363
+      },
+      {
+        "cost_fn": 500.0,
+        "total_cost": 4695.0,
+        "cost_per_transaction": 0.10990683084414064
+      }
+    ],
+    "block_friction_cost_sensitivity": [
+      {
+        "cost_friction": 10.0,
+        "total_cost": 1095.0,
+        "cost_per_transaction": 0.025633222529144625
+      },
+      {
+        "cost_friction": 25.0,
+        "total_cost": 1095.0,
+        "cost_per_transaction": 0.025633222529144625
+      },
+      {
+        "cost_friction": 50.0,
+        "total_cost": 1095.0,
+        "cost_per_transaction": 0.025633222529144625
+      },
+      {
+        "cost_friction": 100.0,
+        "total_cost": 1095.0,
+        "cost_per_transaction": 0.025633222529144625
+      }
+    ],
+    "operator_efficiency_sensitivity": [
+      {
+        "review_efficiency_gamma": 1.0,
+        "residual_fraud_cost": 0.0,
+        "total_cost": 1095.0,
+        "cost_per_transaction": 0.025633222529144625
+      },
+      {
+        "review_efficiency_gamma": 0.9,
+        "residual_fraud_cost": 59.999999999999986,
+        "total_cost": 1155.0,
+        "cost_per_transaction": 0.02703778266772789
+      },
+      {
+        "review_efficiency_gamma": 0.8,
+        "residual_fraud_cost": 119.99999999999997,
+        "total_cost": 1215.0,
+        "cost_per_transaction": 0.028442342806311156
+      },
+      {
+        "review_efficiency_gamma": 0.6,
+        "residual_fraud_cost": 240.00000000000003,
+        "total_cost": 1335.0,
+        "cost_per_transaction": 0.03125146308347769
+      },
+      {
+        "review_efficiency_gamma": 0.0,
+        "residual_fraud_cost": 600.0,
+        "total_cost": 1695.0,
+        "cost_per_transaction": 0.03967882391497729
+      }
+    ]
+  }
+}

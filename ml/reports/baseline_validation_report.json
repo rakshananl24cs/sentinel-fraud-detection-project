@@ -1,0 +1,49 @@
+{
+  "evaluation_environment": "validation_set_only",
+  "notice": "These are validation set benchmarks for research comparison. Final test set remains isolated.",
+  "validation_samples": 42718,
+  "validation_fraud_samples": 56,
+  "baselines": {
+    "logistic_regression": {
+      "model_name": "LogisticRegression_Baseline",
+      "evaluation_split": "validation",
+      "threshold": 0.5,
+      "precision": 0.053169734151329244,
+      "recall": 0.9285714285714286,
+      "f1": 0.10058027079303675,
+      "pr_auc": 0.8393345925069456,
+      "roc_auc": 0.9827862031784727,
+      "true_negatives": 41736,
+      "false_positives": 926,
+      "false_negatives": 4,
+      "true_positives": 52,
+      "hyperparameters": {
+        "class_weight": "balanced",
+        "max_iter": 1000,
+        "solver": "lbfgs"
+      },
+      "random_seed": 42
+    },
+    "decision_tree": {
+      "model_name": "DecisionTree_Baseline",
+      "evaluation_split": "validation",
+      "threshold": 0.5,
+      "precision": 0.030855539971949508,
+      "recall": 0.7857142857142857,
+      "f1": 0.059379217273954114,
+      "pr_auc": 0.36154371688160714,
+      "roc_auc": 0.8182863471674356,
+      "true_negatives": 41280,
+      "false_positives": 1382,
+      "false_negatives": 12,
+      "true_positives": 44,
+      "hyperparameters": {
+        "class_weight": "balanced",
+        "max_depth": 6,
+        "min_samples_split": 20,
+        "min_samples_leaf": 10
+      },
+      "random_seed": 42
+    }
+  }
+}

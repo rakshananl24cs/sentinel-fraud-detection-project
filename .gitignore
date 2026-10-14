@@ -1,0 +1,71 @@
+# ==============================================================================
+# GITIGNORE: Cost-Sensitive Fraud Detection with Operator Feedback Loop
+# ==============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Environment & Secrets (Keep .env.example tracked)
+.env
+.env.*
+!.env.example
+
+# Raw & Processed Datasets (Prevent committing large CSVs)
+*.csv
+*.tsv
+*.parquet
+ml/data/*
+!ml/data/.gitkeep
+
+# Machine Learning Models & Serialized Artifacts
+*.pkl
+*.pickle
+*.joblib
+*.pt
+*.onnx
+ml/models/*
+!ml/models/.gitkeep
+
+# Unit Testing & Coverage Reports
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs, Databases & Runtime Files
+*.log
+*.sqlite
+*.sqlite3
+pgdata/
+backups/
+*.dump
+*.sql
+
+# Frontend Build & Dependencies
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+
+# Operating System & IDE Configurations
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+# Required model artifacts for running fraud detection
+!ml/models/
+!ml/models/calibrator_isotonic.joblib
+!ml/models/calibrator_platt.joblib
+!ml/models/decision_tree_baseline.joblib
+!ml/models/logistic_regression_baseline.joblib
+!ml/models/model_metadata.json
+!ml/models/preprocessor.joblib
+!ml/models/reference_profile.joblib
+!ml/models/xgboost_baseline.joblib
